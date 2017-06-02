@@ -1,0 +1,20 @@
+{
+  "name": "hsz-travel",
+  "version": "1.0.0",
+  "description": "洪山寨旅游网站",
+  "main": "hsz.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "freeacmen",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "connect": "^3.6.2",
+    "express": "^4.15.3",
+    "express3-handlebars": "^0.5.2",
+    "nodemailer": "^4.0.1",
+    "vue": "^2.3.3",
+    "vue-server-renderer": "^2.3.3"
+  }
+}
