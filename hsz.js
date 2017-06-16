@@ -1,7 +1,12 @@
+var webpack = require('webpack');
+var webpackDevMiddleware = require('webpack-dev-middleware');
+var webpackHotMiddleware = require('webpack-hot-middleware');
+var webpackDevConfig = require('./build/webpack.dev.conf');
 var express = require('express');
 var bodyparser = require('body-parser');
 var app = express();
 
+//视图模版引擎
 var handlebars = require('express3-handlebars').create({
     partialsDir: 'views/partials', //默认也是这个目录
     layoutsDir: 'views/layouts/', //默认也是这个目录
@@ -18,11 +23,27 @@ var handlebars = require('express3-handlebars').create({
 
 app.engine('hbs', handlebars.engine);
 app.set('view engine', 'hbs'); //修改视图引擎配置
+
+//webpack构建
+var compiler = webpack(webpackDevConfig);
+app.use(webpackDevMiddleware(compiler, {
+    // public path should be the same with webpack config
+    publicPath: webpackDevConfig.output.publicPath,
+    noInfo: true,
+    stats: {
+        colors: true
+    }
+}));
+app.use(webpackHotMiddleware(compiler));
+
+//监听端口设置\静态中间价\json和url解析中间件
 app.set('port', process.env.PORT || 3000);
 app.use(express.static(__dirname + '/public'));
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
 
+
+//路由
 app.use(function(req, res, next) {
     if (!res.locals.partials) {
         res.locals.partials = {};
