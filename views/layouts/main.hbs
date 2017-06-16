@@ -8,6 +8,10 @@
     {{#if showTests}}
         <link rel="stylesheet" href="/vendor/mocha.css">
     {{/if}}
+
+    {{#if (env === "production")}}
+        <link rel="stylesheet" href="/css/reset.css">
+    {{/if}}
     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 </head>
 <body>
@@ -28,5 +32,8 @@
         <script>mocha.run();</script>
     {{/if}}
     <script src="/index.js"></script>
+    {{#if (env !== "production" && reload === true)}}
+        <script src="/vendor/reload.js"></script>
+    {{/if}}
 </body>
 </html>

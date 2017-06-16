@@ -23,14 +23,19 @@ module.exports = {
             loader: 'babel-loader'
         }, {
             test: /\.(png|jpg)$/,
-            loader: 'url?limit=8192&context=client&name=[path][name].[ext]'
+            use: 'url-loader?limit=8192&context=client&name=[path][name].[ext]'
         }, {
             test: /\.scss$/,
-            loader: 'style!css?sourceMap!resolve-url!sass?sourceMap'
+            use: [
+                'style-loader',
+                'css-loader?sourceMap',
+                'resolve-url-loader',
+                'sass-loader?sourceMap'
+            ]
         }]
     },
     plugins: [
-        // new webpack.optimize.OccurenceOrderPlugin(),webpack2.0 已默认该功能
+        // new webpack.optimize.OccurenceOrderPlugin(),   webpack2.0 已默认该功能
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin()
     ]

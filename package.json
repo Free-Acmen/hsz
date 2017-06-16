@@ -1,31 +1,45 @@
 {
-  "name": "hsz-travel",
-  "version": "1.0.0",
-  "description": "洪山寨旅游网站",
-  "main": "hsz.js",
-  "scripts": {
-    "test": "mocha-webpack --webpack-config build/webpack.test.conf.js \"test/**/*.js\""
-  },
-  "author": "freeacmen",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.17.2",
-    "connect": "^3.6.2",
-    "express": "^4.15.3",
-    "express3-handlebars": "^0.5.2",
-    "nodemailer": "^4.0.1",
-    "vue": "^2.3.3",
-    "vue-server-renderer": "^2.3.3"
-  },
-  "devDependencies": {
-    "babel-core": "^6.25.0",
-    "babel-loader": "^7.0.0",
-    "chai": "^4.0.2",
-    "mocha": "^3.4.2",
-    "mocha-webpack": "^0.7.0",
-    "webpack": "^2.6.1",
-    "webpack-dev-middleware": "^1.10.2",
-    "webpack-hot-middleware": "^2.18.0",
-    "webpack-node-externals": "^1.6.0"
-  }
+    "name": "hsz-travel",
+    "version": "1.0.0",
+    "description": "洪山寨旅游网站",
+    "main": "hsz.js",
+    "scripts": {
+        "start": "cross-env NODE_ENV=dev supervisor -w public,lib,handlers,hsz.js -e node,js,html,scss hsz",
+        "browsersync": "cross-env NODE_ENV=dev node app_browsersync",
+        "build": "webpack",
+        "test": "mocha-webpack --webpack-config build/webpack.test.conf.js \"test/**/*.js\""
+    },
+    "author": "freeacmen",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.17.2",
+        "connect": "^3.6.2",
+        "express": "^4.15.3",
+        "express3-handlebars": "^0.5.2",
+        "nodemailer": "^4.0.1",
+        "vue": "^2.3.3",
+        "vue-server-renderer": "^2.3.3"
+    },
+    "devDependencies": {
+        "babel-core": "^6.25.0",
+        "babel-loader": "^7.0.0",
+        "chai": "^4.0.2",
+        "clean-webpack-plugin": "^0.1.16",
+        "cross-env": "^5.0.1",
+        "css-loader": "^0.28.4",
+        "extract-text-webpack-plugin": "^2.1.2",
+        "file-loader": "^0.11.2",
+        "mocha": "^3.4.2",
+        "mocha-webpack": "^0.7.0",
+        "node-sass": "^4.5.3",
+        "npm-install-webpack-plugin": "^4.0.4",
+        "reload": "^1.1.5",
+        "resolve-url-loader": "^2.0.2",
+        "style-loader": "^0.18.2",
+        "url-loader": "^0.5.9",
+        "webpack": "^2.6.1",
+        "webpack-dev-middleware": "^1.10.2",
+        "webpack-hot-middleware": "^2.18.0",
+        "webpack-node-externals": "^1.6.0"
+    }
 }
